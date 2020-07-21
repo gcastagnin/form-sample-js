@@ -4,21 +4,17 @@ let generarClave = function () {
 	let aceptada = checkPass(pass)
 	
 	if (aceptada) {
-		let campo = document.querySelectorAll('.pass')
-		for (var i = campo.length - 1; i >= 0; i--) {
-			campo[i].value = pass
-			campo[i].type = 'text'
-		}
-		campo = document.querySelectorAll('#claveLabel')
-		campo[0].style.display = 'none'
-		campo = document.querySelectorAll('#clave2')
-		campo[0].style.display = 'none'
+		
 	} else{
 		generarClave()
 	}
 }
 
 let checkPass = function (pass) {
+	let acepted = false
+
+	
+
 	let MAYUSCULAS 	= ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'W', 'Y', 'Z']
 	let numeros 	= [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 	let especiales 	= ['@', '#', '<', '>', '.', '*', '+', '-', '/', '_']
@@ -57,7 +53,7 @@ let checkPass = function (pass) {
 		}
 	}
 
-	let acepted = false
+	
 	if ( mayuscula == true && numero == true && caracter == true ){
 		acepted = true
 	}
@@ -65,6 +61,27 @@ let checkPass = function (pass) {
 	return(acepted)
 }
 
+let checkPassLargoYEspejo = function (){
+	
+	let acepted = false
+
+	let campo = document.querySelectorAll('.pass')
+	pass = campo[0].value
+
+	if (pass.length < 8){
+		console.log("Contraseña corta")
+		return(acepted)
+	}
+
+	campo = document.querySelectorAll('.pass')
+	if (campo[0].value != campo[1].value){
+		console.log("Las contraseñas no coinciden")
+		return(acepted)
+	}
+
+	acepted = true
+	return(acepted)
+}
 
 let generarPass = function () {
 		let diccionario = []
@@ -90,13 +107,67 @@ let generarPass = function () {
 		 	password += diccionario[Math.floor(Math.random() * (diccionario.length))]
 		 }
 
-	
+		let campo = document.querySelectorAll('.pass')
+		for (var i = campo.length - 1; i >= 0; i--) {
+			campo[i].value = password
+			campo[i].type = 'text'
+		}
+		campo = document.querySelectorAll('#claveLabel')
+		campo[0].style.display = 'none'
+		campo = document.querySelectorAll('#clave2')
+		campo[0].style.display = 'none'
 
 	return(password)
 }
 
+let checkPassEscrita = function () {
+
+	let aceptada = checkPassLargoYEspejo(document.querySelector('#clave').value)
+	let aceptada2 = checkPass(document.querySelector('#clave').value)
+	console.log("Largo y copiada ::",aceptada, "Caracteres válidos", aceptada2 )
+	if (!aceptada || !aceptada2) {
+		alert("La contraseña no cumple los criterios de seguridad!");
+		return (false)
+	}
+	else {
+		console.log("Contraseña escrita aceptada")
+		return (true)
+	}
+}
 
 let guardarUsuario = function () {
+	
+	let passAceptada = true
+
+	if (!(document.querySelector('#clave2').style.display == 'none')){
+	console.log("Clave escrita")
+	passAceptada = checkPassEscrita()
+	}
+
+	else{console.log("Clave generada ya chequeada")}
+
+
+	if (passAceptada == true){
+		let randomId = generarId()
+
+		campo = document.querySelectorAll('#idUser')
+		campo = campo[0]
+		campo.value = randomId
+
+		let usuario = {
+			id:document.querySelector('#idUser').value,
+			nombreapellido:document.querySelector('#nombre').value,
+			usuario:document.querySelector('#usuario').value,
+			password:document.querySelector('#clave').value
+		}
+		console.log(usuario)
+	}
+	//else{console.log("Pass no aceptada")}
+}
+
+
+let generarId =function () {
+
 	let v 	= 4
 	let randomId = ''
 	for (let i = v; i >= 0; i--) {
@@ -106,21 +177,11 @@ let guardarUsuario = function () {
 			randomId += v0() + "-"
 		}
 	}
+	return(randomId)
 
-
-	campo = document.querySelectorAll('#idUser')
-	campo = campo[0]
-	campo.value = randomId
-
-	let usuario = {
-		id:document.querySelector('#idUser').value,
-		nombreapellido:document.querySelector('#nombre').value,
-		usuario:document.querySelector('#usuario').value,
-		password:document.querySelector('#clave').value
-
-	}
-	console.log(usuario)
 }
+	
+
 
 
 let v0 = function () {
