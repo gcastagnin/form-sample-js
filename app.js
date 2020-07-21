@@ -13,11 +13,10 @@ let generarClave = function () {
 let checkPass = function (pass) {
 	let acepted = false
 
-	
+	let MAYUSCULAS 	= dicMayusculas()
+	let numeros 	= dicNumeros()
+	let especiales 	= dicEspeciales()
 
-	let MAYUSCULAS 	= ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'W', 'Y', 'Z']
-	let numeros 	= [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-	let especiales 	= ['@', '#', '<', '>', '.', '*', '+', '-', '/', '_']
 	let mayuscula = false
 	let numero = false
 	let caracter = false
@@ -83,12 +82,40 @@ let checkPassLargoYEspejo = function (){
 	return(acepted)
 }
 
+let dicMayusculas = function () {
+	let MAYUSCULAS 	= ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'W', 'Y', 'Z']
+	return(MAYUSCULAS)
+}
+
+let dicMinusculas = function () {
+	let minusculas 	= ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'w', 'y', 'z']
+	return(minusculas)
+}
+
+let dicNumeros = function () {
+	let numeros 	= [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+	return(numeros)
+}
+
+let dicEspeciales = function () {
+	let especiales 	= ['@', '#', '<', '>', '.', '*', '+', '-', '/', '_']
+	return(especiales)
+}
+
+let hexaMayusculas = function () {
+	let hexadeciMayusculas 	= ['A', 'B', 'C', 'D', 'E', 'F']
+	return(hexadeciMayusculas)
+}
+
+
 let generarPass = function () {
 		let diccionario = []
-		let MAYUSCULAS 	= ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'W', 'Y', 'Z']
-		let minusculas 	= ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'w', 'y', 'z']
-		let numeros 	= [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-		let especiales 	= ['@', '#', '<', '>', '.', '*', '+', '-', '/', '_']
+
+		let MAYUSCULAS 	= dicMayusculas()
+		let minusculas 	= dicMinusculas()
+		let numeros 	= dicNumeros()
+		let especiales 	= dicEspeciales()
+
 		for (var i = MAYUSCULAS.length - 1; i >= 0; i--) {
 		 	let diccionarioSize = diccionario.push (MAYUSCULAS[i])
 		 } 
@@ -124,7 +151,7 @@ let checkPassEscrita = function () {
 
 	let aceptada = checkPassLargoYEspejo(document.querySelector('#clave').value)
 	let aceptada2 = checkPass(document.querySelector('#clave').value)
-	console.log("Largo y copiada ::",aceptada, "Caracteres válidos", aceptada2 )
+	console.log("Largo y/o copiada ::",aceptada, "Caracteres válidos", aceptada2 )
 	if (!aceptada || !aceptada2) {
 		alert("La contraseña no cumple los criterios de seguridad!");
 		return (false)
@@ -180,17 +207,15 @@ let generarId =function () {
 	return(randomId)
 
 }
-	
-
 
 
 let v0 = function () {
 	let idDiccionario = []
-		let MAYUSCULAS 	= ['A', 'B', 'C', 'D', 'E', 'F']
-		let numeros 	= [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+		let mayusculas16 = hexaMayusculas()
+		let numeros 	 = dicNumeros()
 
-		for (var i = MAYUSCULAS.length - 1; i >= 0; i--) {
-		 	let diccionarioSize = idDiccionario.push (MAYUSCULAS[i])
+		for (var i = mayusculas16.length - 1; i >= 0; i--) {
+		 	let diccionarioSize = idDiccionario.push (mayusculas16[i])
 		 } 
 
 		 for (var i = numeros.length - 1; i >= 0; i--) {
