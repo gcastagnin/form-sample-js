@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form-sample-js</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="estilo.css">
+
+	<!-- Anti cache -->
+	<meta http-equiv="Expires" content="0">
+  	<meta http-equiv="Last-Modified" content="0">
+  	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  	<meta http-equiv="Pragma" content="no-cache">
+</head>
+<body>
+	<script type="text/javascript" src="app.js"></script>
+
+
+	<div id="envuelve todo">
+		<input type="hidden" name="id" id="idUser">
+		<label>Nombre y apellido</label><br>
+		<input type="text" name="nombre" id="nombre"><br><br>
+
+		<label>Usuario</label> <br>
+		<input type="text" name="usuario" id="usuario"><br><br>
+
+		<label>Clave</label><br>
+		<input type="password" name="clave" id="clave" class="pass"><br><br>
+		
+		<label id="claveLabel">Repetir clave</label><br>
+		<input type="password" name="clave2" id="clave2" class="pass"><br><br>
+		
+		<button type="button" onclick="generarClave()">Generar clave</button>
+		<button type="button" onclick="guardarUsuario()">Guardar</button>
+	</div>
+</body>
+</html>
