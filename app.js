@@ -102,8 +102,8 @@ let dicEspeciales = function () {
 	return(especiales)
 }
 
-let hexaMayusculas = function () {
-	let hexadeciMayusculas 	= ['A', 'B', 'C', 'D', 'E', 'F']
+let dicHexadecimal = function () {
+	let hexadeciMayusculas 	= [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 'A', 'B', 'C', 'D', 'E', 'F']
 	return(hexadeciMayusculas)
 }
 
@@ -189,7 +189,6 @@ let guardarUsuario = function () {
 		}
 		console.log(usuario)
 	}
-	//else{console.log("Pass no aceptada")}
 }
 
 
@@ -211,15 +210,11 @@ let generarId =function () {
 
 let v0 = function () {
 	let idDiccionario = []
-		let mayusculas16 = hexaMayusculas()
+		let hexadecimal = dicHexadecimal()
 		let numeros 	 = dicNumeros()
 
-		for (var i = mayusculas16.length - 1; i >= 0; i--) {
-		 	let diccionarioSize = idDiccionario.push (mayusculas16[i])
-		 } 
-
-		 for (var i = numeros.length - 1; i >= 0; i--) {
-		 	let diccionarioSize = idDiccionario.push (numeros[i])
+		for (var i = hexadecimal.length - 1; i >= 0; i--) {
+		 	let diccionarioSize = idDiccionario.push (hexadecimal[i])
 		 } 
 
 	let RandN 	= 0
