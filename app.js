@@ -210,12 +210,11 @@ let generarId =function () {
 
 let v0 = function () {
 	let idDiccionario = []
-		let hexadecimal = dicHexadecimal()
-		let numeros 	 = dicNumeros()
+	let hexadecimal = dicHexadecimal()
 
-		for (var i = hexadecimal.length - 1; i >= 0; i--) {
-		 	let diccionarioSize = idDiccionario.push (hexadecimal[i])
-		 } 
+	for (var i = hexadecimal.length - 1; i >= 0; i--) {
+		let diccionarioSize = idDiccionario.push (hexadecimal[i])
+	} 
 
 	let RandN 	= 0
 	let psw 	= ''
