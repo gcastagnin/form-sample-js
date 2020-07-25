@@ -52,7 +52,6 @@ let checkPass = function (pass) {
 		}
 	}
 
-	
 	if ( mayuscula == true && numero == true && caracter == true ){
 		acepted = true
 	}
@@ -116,18 +115,13 @@ let generarPass = function () {
 		let numeros 	= dicNumeros()
 		let especiales 	= dicEspeciales()
 
-		for (var i = MAYUSCULAS.length - 1; i >= 0; i--) {
-		 	let diccionarioSize = diccionario.push (MAYUSCULAS[i])
-		 } 
-		 for (var i = minusculas.length - 1; i >= 0; i--) {
-		 	let diccionarioSize = diccionario.push (minusculas[i])
-		 }
-		 for (var i = numeros.length - 1; i >= 0; i--) {
-		 	let diccionarioSize = diccionario.push (numeros[i])
-		 } 
-		 for (var i = especiales.length - 1; i >= 0; i--) {
-		 	let diccionarioSize = diccionario.push (especiales[i])
-		 }
+		diccionario.push(...MAYUSCULAS)
+
+		diccionario.push (...minusculas)
+
+	 	diccionario.push (...numeros)
+
+	 	diccionario.push (...especiales)
 
 		 let password = ""
 		 for (var i = 7; i >= 0; i--) {
@@ -153,7 +147,7 @@ let checkPassEscrita = function () {
 	let aceptada2 = checkPass(document.querySelector('#clave').value)
 	console.log("Largo y/o copiada ::",aceptada, "Caracteres válidos", aceptada2 )
 	if (!aceptada || !aceptada2) {
-		alert("La contraseña no cumple los criterios de seguridad!");
+		alert("La contraseña no cumple los criterios de seguridad!")
 		return (false)
 	}
 	else {
@@ -212,9 +206,7 @@ let v0 = function () {
 	let idDiccionario = []
 	let hexadecimal = dicHexadecimal()
 
-	for (var i = hexadecimal.length - 1; i >= 0; i--) {
-		let diccionarioSize = idDiccionario.push (hexadecimal[i])
-	} 
+	idDiccionario.push (...hexadecimal)
 
 	let RandN 	= 0
 	let psw 	= ''
